@@ -101,8 +101,8 @@ maprdb mapr:> find /apps/user --limit 2
 
 ### Play Time
 
-Hit the url http://localhost:1234/{since} 
+Hit the url http://localhost:1234/users/{since} 
 
-where since = 2010-07-09
+example of since = 2010-07-09
 
 NOTE: For simplify, limit of 1 is added to the MapRDB query
