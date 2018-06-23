@@ -47,7 +47,7 @@ Verify that MapR cluster installation successful using following steps:
   10602 Gateway
 ````
 
-3. Double check the Docker logs to see docker image IP has bee assigned successfully:
+3. Double check the Docker logs to see docker image IP has been assigned successfully:
 
  * Get the container ID 
 ````bash
