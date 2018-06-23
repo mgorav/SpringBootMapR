@@ -13,6 +13,7 @@ A Spring Boot service which connect to MapR cluster and demonstrate querying usi
 * Maven 3.x
 * Spring Boot 2.0.2
 * Setup [MapR 6.0 client](http://package.mapr.com/releases/v6.0.0/mac/)  in the folder /opt
+* Docker (make sure atleast 8 GB of memory is allocated with 4 GB of swap memory)
 
 ## Setting up MapR Container For Developers
 
@@ -65,7 +66,8 @@ Verify that MapR cluster installation successful using following steps:
  ````
 
 
-* Step 2 Download big data sample from [Yelp](https://www.yelp.com/dataset_challenge)
+* Step 2 Download big data sample from [Yelp](https://www.yelp.com/dataset_challenge)  
+         
 
 Unzip and copy the user.json file to the container using container ID obtained above,
 as shown below:
