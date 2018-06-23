@@ -12,6 +12,7 @@ A Spring Boot service which connect to MapR cluster and demonstrate querying usi
 * JDK 8
 * Maven 3.x
 * Spring Boot 2.0.2
+* Setup [MapR 6.0 client](http://package.mapr.com/releases/v6.0.0/mac/)  in the folder /opt
 
 ## Setting up MapR Container For Developers
 
