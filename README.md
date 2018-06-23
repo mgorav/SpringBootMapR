@@ -1,4 +1,4 @@
-# MapR-DB JSON Using Spring Boot
+# Micro Service With MapR-DB (OJAI) Using Spring Boot
 
 ## Introduction
 
