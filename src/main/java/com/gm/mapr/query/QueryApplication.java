@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.ojai.store.QueryCondition.Op.EQUAL;
+
 @SpringBootApplication
 public class QueryApplication {
 
@@ -37,20 +39,20 @@ public class QueryApplication {
             // Create an OJAI connection to MapR cluster
             try (Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL)) {
                 // Get an instance of OJAI
-                DocumentStore store = connection.getStore(TABLE_NAME);
+                DocumentStore documentStore = connection.getStore(TABLE_NAME);
 
                 Query query = connection.newQuery()
-                        .select("name", "yelping_since", "support")
-                        .where(connection.newCondition().is("yelping_since", QueryCondition.Op.EQUAL, since).build()) // condition
+                        .select("name", "yelping_since", "support") // projection
+                        .where(connection.newCondition().is("yelping_since", EQUAL, since).build()) // condition
                         .build();
 
                 List<Map<String, Object>> output = new ArrayList<>();
-                store.find(query).forEach(userDocument -> {
+                documentStore.find(query).forEach(userDocument -> {
                     output.add(userDocument.asMap());
                 });
 
                 // Close this instance of OJAI DocumentStore
-                store.close();
+                documentStore.close();
 
                 // close the OJAI connection and release any resources held by the connection
                 connection.close();
