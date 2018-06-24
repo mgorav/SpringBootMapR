@@ -81,7 +81,7 @@ mapr importJSON -idField user_id -src /tmp/user.json -dst /apps/user -mapreduce 
  
 * Step 4 Run hadoop fs commands to put the data. The MapR Container For Developers does not include MapR NFS, so you will need to use this command to save the JSON files on the MapR filesystem.
 ````bash
- hadoop fs -put business.json review.json user.json /tmp/
+ hadoop fs -put user.json /tmp/
 ````
 
 * Step 5 Give permission to access above MapR DB table
