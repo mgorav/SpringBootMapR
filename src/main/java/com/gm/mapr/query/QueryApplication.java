@@ -35,30 +35,31 @@ public class QueryApplication {
         List<Map<String, Object>> doFindUsersSince(String since) {
 
             // Create an OJAI connection to MapR cluster
-            Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL);
-            // Get an instance of OJAI
-            DocumentStore store = connection.getStore(TABLE_NAME);
+            try (Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL)) {
+                // Get an instance of OJAI
+                DocumentStore store = connection.getStore(TABLE_NAME);
 
-            Query query = connection.newQuery()
-                    .select("name", "yelping_since", "support")
-                    .where(connection.newCondition().is("yelping_since", QueryCondition.Op.EQUAL, since).build()) // condition
-                    .build();
+                Query query = connection.newQuery()
+                        .select("name", "yelping_since", "support")
+                        .where(connection.newCondition().is("yelping_since", QueryCondition.Op.EQUAL, since).build()) // condition
+                        .build();
 
-            DocumentStream stream = store.find(query);
-            List<Map<String, Object>> output = new ArrayList<>();
-            for (Document userDocument : stream) {
+                DocumentStream stream = store.find(query);
+                List<Map<String, Object>> output = new ArrayList<>();
+                for (Document userDocument : stream) {
 
-                output.add(userDocument.asMap());
-            }
+                    output.add(userDocument.asMap());
+                }
 
 
-            // Close this instance of OJAI DocumentStore
-            store.close();
+                // Close this instance of OJAI DocumentStore
+                store.close();
 
-            // close the OJAI connection and release any resources held by the connection
-            connection.close();
+                // close the OJAI connection and release any resources held by the connection
+                connection.close();
 
-            return output;
+                return output;
+            }  
         }
 
     }
