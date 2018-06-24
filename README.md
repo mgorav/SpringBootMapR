@@ -30,6 +30,7 @@ This step can take upto 5 to 10 minutes ... be patient!!
 **NOTE**  Currently docker image is only available for mac OS
 
 Verify that MapR cluster installation successful using following steps:
+
     a. Log into docker images
     ````bash
       ssh root@localhost -p 2222 
