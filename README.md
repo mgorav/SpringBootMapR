@@ -25,6 +25,7 @@ mac os)
 ````bash
   ./mapr_devenv_docker_setup.sh 
 ```` 
+
 This step can take upto 5 to 10 minutes ... be patient!!
 
 **NOTE**  Currently docker image is only available for mac OS
@@ -97,6 +98,11 @@ maprcli table cf edit -path /apps/user -cfname default -readperm p -writeperm p
 ````
 
 Verify that Step 2 to 5 is done correctly as shown below:
+
+**MapR DB Shell**
+The MapR db shell in picture below:
+
+![alt text](maprdbshell.png)
 
 ``` bash
 mapr dbshell
