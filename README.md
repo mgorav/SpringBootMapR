@@ -132,7 +132,13 @@ maprcli table index add -path /apps/user -index idx_name -indexedfields 'name:1'
 
 ### Play Time
 
-Hit the url http://localhost:1234/users/{since} 
+* Check MCS is working
+``` yaml
+     https://localhost:8443/
+``` 
+![alt text](mcs.png)
+
+*Hit the url http://localhost:1234/users/{since} 
 
 example of since = 2010-07-09
 
