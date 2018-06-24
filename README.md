@@ -35,7 +35,7 @@ Verify that MapR cluster installation successful using following steps:
      
       ssh root@localhost -p 2222 
     
-    b. Run JPS and make sure all the services are running as shown below:
+    b. Run jps and make sure all the services are running as shown below:
     
       $ jps
       2883 QuorumPeerMain
