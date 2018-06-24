@@ -97,9 +97,37 @@ mapr dbshell
 
 jsonoptions --pretty true --withtags false
 
-find /apps/user --limit 2
+find /apps/user --limit 1
 
 ```
+
+More examples:
+``` bash
+find /apps/user --id l52TR2e4p9K4Z9zezyGKfg
+
+// projection
+find /apps/user --id l52TR2e4p9K4Z9zezyGKfg --f name,average_stars,useful 
+
+// query condition
+find /apps/user --where '{ "$eq" : {"since":"2010-07-09"} }' --f _id,name,support
+
+```
+
+Create indexes
+
+``` bash
+maprcli table index add -path /apps/user -index idx_support -indexedfields 'support:1'
+
+maprcli table index add -path /apps/user -index idx_since -indexedfields 'since:1'
+
+
+maprcli table index add -path /apps/user -index idx_name -indexedfields 'name:1'
+
+```
+
+**NOTE** above index can be supported using REST API calls
+
+
 
 
 ### Play Time
