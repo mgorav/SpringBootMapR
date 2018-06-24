@@ -25,7 +25,9 @@ mac os)
 ````bash
   ./mapr_devenv_docker_setup.sh 
 ```` 
-This step can take upto 5 to 10 minutes ... be patient!! 
+This step can take upto 5 to 10 minutes ... be patient!!
+
+**NOTE**  Currently docker image is only available for mac OS
 
 Verify that MapR cluster installation successful using following steps:
 1. Log into docker images
