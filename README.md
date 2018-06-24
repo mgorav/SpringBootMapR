@@ -95,9 +95,9 @@ Verify that Step 2 to 5 is done correctly as shown below:
 ``` bash
 mapr dbshell
 
-maprdb mapr:> jsonoptions --pretty true --withtags false
+jsonoptions --pretty true --withtags false
 
-maprdb mapr:> find /apps/user --limit 2
+find /apps/user --limit 2
 
 ```
 
