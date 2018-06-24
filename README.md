@@ -30,12 +30,12 @@ This step can take upto 5 to 10 minutes ... be patient!!
 **NOTE**  Currently docker image is only available for mac OS
 
 Verify that MapR cluster installation successful using following steps:
-1. Log into docker images
+a. Log into docker images
 ````bash
   ssh root@localhost -p 2222 
 ```` 
 
-2. Run JPS and make sure all the services are running as shown below:
+b. Run JPS and make sure all the services are running as shown below:
 
 ````bash
   jps
@@ -49,7 +49,7 @@ Verify that MapR cluster installation successful using following steps:
   10602 Gateway
 ````
 
-3. Double check the Docker logs to see docker image IP has been assigned successfully:
+c. Double check the Docker logs to see docker image IP has been assigned successfully:
 
  * Get the container ID 
 ````bash
