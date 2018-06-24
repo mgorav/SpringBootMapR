@@ -44,13 +44,10 @@ public class QueryApplication {
                         .where(connection.newCondition().is("yelping_since", QueryCondition.Op.EQUAL, since).build()) // condition
                         .build();
 
-                DocumentStream stream = store.find(query);
                 List<Map<String, Object>> output = new ArrayList<>();
-                for (Document userDocument : stream) {
-
+                store.find(query).forEach(userDocument -> {
                     output.add(userDocument.asMap());
-                }
-
+                });
 
                 // Close this instance of OJAI DocumentStore
                 store.close();
