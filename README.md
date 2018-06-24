@@ -125,9 +125,7 @@ maprcli table index add -path /apps/user -index idx_name -indexedfields 'name:1'
 
 ```
 
-**NOTE** above index can be supported using REST API calls
-
-
+**NOTE** Indexing is also supported using REST API calls
 
 
 ### Play Time
