@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @SpringBootApplication
 public class QueryApplication {
 
@@ -24,11 +28,11 @@ public class QueryApplication {
     public class MapRQuery {
 
         @GetMapping("/users/{since}")
-        public String users(@PathVariable String since) {
+        public List<Map<String, Object>> users(@PathVariable String since) {
             return doFindUsersSince(since);
         }
 
-        String doFindUsersSince(String since) {
+        List<Map<String, Object>> doFindUsersSince(String since) {
 
             // Create an OJAI connection to MapR cluster
             Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL);
@@ -38,13 +42,13 @@ public class QueryApplication {
             Query query = connection.newQuery()
                     .select("name", "yelping_since", "support")
                     .where(connection.newCondition().is("yelping_since", QueryCondition.Op.EQUAL, since).build()) // condition
-                    .limit(1)
                     .build();
 
             DocumentStream stream = store.find(query);
-            StringBuilder output = new StringBuilder();
+            List<Map<String, Object>> output = new ArrayList<>();
             for (Document userDocument : stream) {
-                output.append(userDocument.asJsonString());
+
+                output.add(userDocument.asMap());
             }
 
 
@@ -54,7 +58,7 @@ public class QueryApplication {
             // close the OJAI connection and release any resources held by the connection
             connection.close();
 
-            return output.toString();
+            return output;
         }
 
     }
