@@ -73,6 +73,12 @@ as shown below:
   ````bash
     docker cp user.json 689e3f5ff7e0:/root/
  ````
+ **Check Point** : List the files on docker image and verify user.json in the root folder
+  ````bash
+      $ ls
+      user.json  warden.drill-bits.conf
+  ```` 
+ 
  
 * Step 3 Import the user.json into MapR-DB JSON tables
  ````bash
