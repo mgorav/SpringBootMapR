@@ -129,7 +129,7 @@ Create indexes
 ``` bash
 maprcli table index add -path /apps/user -index idx_support -indexedfields 'support:1'
 
-maprcli table index add -path /apps/user -index idx_since -indexedfields 'since:1'
+maprcli table index add -path /apps/user -index idx_since -indexedfields 'yelping_since:1'
 
 
 maprcli table index add -path /apps/user -index idx_name -indexedfields 'name:1'
