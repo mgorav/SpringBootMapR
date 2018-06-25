@@ -136,6 +136,10 @@ maprcli table index add -path /apps/user -index idx_name -indexedfields 'name:1'
 
 ```
 
+__verify after index in MCS__
+
+![alt text](Index.png)
+
 **NOTE** Indexing is also supported using REST API calls
 
 
