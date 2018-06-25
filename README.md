@@ -80,16 +80,15 @@ as shown below:
       user.json  warden.drill-bits.conf
   ```` 
  
- 
-* Step 3 Import the user.json into MapR-DB JSON tables
- ````bash
-mapr importJSON -idField user_id -src /tmp/user.json -dst /apps/user -mapreduce false
- ````
- 
-* Step 4 Run hadoop fs commands to put the data. The MapR Container For Developers does not include MapR NFS, so you will need to use this command to save the JSON files on the MapR filesystem.
+* Step 3 Run hadoop fs commands to put the data. The MapR Container For Developers does not include MapR NFS, so you will need to use this command to save the JSON files on the MapR filesystem.
 ````bash
  hadoop fs -put user.json /tmp/
 ````
+
+* Step 4 Import the user.json into MapR-DB JSON tables
+ ````bash
+mapr importJSON -idField user_id -src /tmp/user.json -dst /apps/user -mapreduce false
+ ````
 
 * Step 5 Give permission to access above MapR DB table
 
