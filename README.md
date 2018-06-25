@@ -120,7 +120,7 @@ find /apps/user --id l52TR2e4p9K4Z9zezyGKfg
 find /apps/user --id l52TR2e4p9K4Z9zezyGKfg --f name,average_stars,useful 
 
 // query condition
-find /apps/user --where '{ "$eq" : {"since":"2010-07-09"} }' --f _id,name,support
+find /apps/user --where '{ "$eq" : {"yelping_since":"2010-07-09"} }' --f _id,name,yelping_since
 
 ```
 
