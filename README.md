@@ -140,7 +140,7 @@ __verify after index in MCS__
 
 ![alt text](Index.png)
 
-**NOTE** Indexing is also supported using REST API calls
+**NOTE** Indexing is also supported using [REST API](https://maprdocs.mapr.com/home/ReferenceGuide/table-index-list.html#table-index-list) calls
 
 
 ### Play Time
