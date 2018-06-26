@@ -70,7 +70,6 @@
             <groupId>org.ojai</groupId>
             <version>${ojai.version}</version>
         </dependency>
-
         <dependency>
             <artifactId>mapr-ojai-driver</artifactId>
             <groupId>com.mapr.ojai</groupId>

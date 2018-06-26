@@ -1,7 +1,5 @@
 package com.gm.mapr.query;
 
-import org.ojai.Document;
-import org.ojai.DocumentStream;
 import org.ojai.store.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,28 +35,31 @@ public class QueryApplication {
         List<Map<String, Object>> doFindUsersSince(String since) {
 
             // Create an OJAI connection to MapR cluster
+            // NOTE - Connection is auto closeable - close the OJAI connection and release any resources held by the connection
             try (Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL)) {
                 // Get an instance of OJAI
-                DocumentStore documentStore = connection.getStore(TABLE_NAME);
+                // NOTE - DocumentStore is auto closeable - Close this instance of OJAI DocumentStore
+                try (DocumentStore documentStore = connection.getStore(TABLE_NAME)) {
 
-                Query query = connection.newQuery()
-                        .select("name", "yelping_since", "support") // projection
-                        .where(connection.newCondition().is("yelping_since", EQUAL, since).build()) // condition
-                        .build();
+                    Query query = connection.newQuery()
+                            .select("name", "yelping_since", "support") // projection
+                            .where(connection.newCondition().is("yelping_since", EQUAL, since).build()) // condition
+//                        .setOption(OjaiOptions.OPTION_FORCE_DRILL, true)
+                            .build();
 
-                List<Map<String, Object>> output = new ArrayList<>();
-                documentStore.find(query).forEach(userDocument -> {
-                    output.add(userDocument.asMap());
-                });
+                    QueryResult queryResult = documentStore.find(query);
 
-                // Close this instance of OJAI DocumentStore
-                documentStore.close();
+                    System.out.println(queryResult.getQueryPlan().toString());
 
-                // close the OJAI connection and release any resources held by the connection
-                connection.close();
+                    List<Map<String, Object>> output = new ArrayList<>();
+                    queryResult.forEach(userDocument -> {
+                        output.add(userDocument.asMap());
+                    });
 
-                return output;
-            }  
+
+                    return output;
+                }
+            }
         }
 
     }
