@@ -66,7 +66,13 @@ Verify that MapR cluster installation successful using following steps:
 
 
 * Step 2 Download big data sample from [Yelp](https://www.yelp.com/dataset_challenge)  
-         
+     
+**NOTE: Size of user.json - 1.8G**  
+
+  ````bash
+    ls  -hltur user.json
+    -rw-r--r--@ 1 gem  staff   1.8G Jun 25 20:49 user.json
+ ```` 
 
 Unzip and copy the user.json file to the container using container ID obtained above,
 as shown below:
@@ -164,3 +170,4 @@ example - http://localhost:1234/users/Shawn/2010-07-09
 ]
 ``` 
 
+**NOTE - Querying 1.8 gb of user.json took 2 milliseconds**

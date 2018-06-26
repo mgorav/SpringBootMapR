@@ -56,16 +56,19 @@ public class MapRQueryApplication {
 
                     QueryResult queryResult = documentStore.find(query);
 
-                    System.out.println(queryResult.getQueryPlan().toString());
+//                    System.out.println(queryResult.getQueryPlan().toString());
 
-                    queryResult.getQueryPlan().asMap().forEach((key, value) -> {
-                        System.out.println(String.format("%s %s", key, value));
-                    });
+//                    queryResult.getQueryPlan().asMap().forEach((key, value) -> {
+//                        System.out.println(String.format("%s %s", key, value));
+//                    });
 
+                    long start = System.currentTimeMillis();
                     List<Map<String, Object>> output = new ArrayList<>();
                     queryResult.forEach(userDocument -> {
                         output.add(userDocument.asMap());
                     });
+
+                    System.out.println("Query Execution Time:  " + (System.currentTimeMillis() - start) + " ms");
 
 
                     return output;
