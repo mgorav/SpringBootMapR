@@ -1,6 +1,9 @@
 package com.gm.mapr.query;
 
-import org.ojai.store.*;
+import org.ojai.store.Connection;
+import org.ojai.store.DocumentStore;
+import org.ojai.store.Query;
+import org.ojai.store.QueryResult;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.ojai.store.DriverManager.getConnection;
 import static org.ojai.store.QueryCondition.Op.EQUAL;
 
 @SpringBootApplication
@@ -36,7 +40,7 @@ public class MapRQueryApplication {
 
             // Create an OJAI connection to MapR cluster
             // NOTE - Connection is auto closeable - close the OJAI connection and release any resources held by the connection
-            try (Connection connection = DriverManager.getConnection(OJAI_CONNECTION_URL)) {
+            try (Connection connection = getConnection(OJAI_CONNECTION_URL)) {
                 // Get an instance of OJAI
                 // NOTE - DocumentStore is auto closeable - Close this instance of OJAI DocumentStore
                 try (DocumentStore documentStore = connection.getStore(TABLE_NAME)) {
@@ -50,6 +54,10 @@ public class MapRQueryApplication {
                     QueryResult queryResult = documentStore.find(query);
 
                     System.out.println(queryResult.getQueryPlan().toString());
+
+                    queryResult.getQueryPlan().asMap().forEach((key, value) -> {
+                        System.out.println(String.format("%s %s", key, value));
+                    });
 
                     List<Map<String, Object>> output = new ArrayList<>();
                     queryResult.forEach(userDocument -> {
