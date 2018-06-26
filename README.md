@@ -151,42 +151,16 @@ __verify after index in MCS__
 ``` 
 ![alt text](mcs.png)
 
-*Hit the url http://localhost:1234/users/{since} 
+*Hit the url http://localhost:1234/users/{name}/{since} 
 
-example of since = 2010-07-09
+example - http://localhost:1234/users/Shawn/2010-07-09
 
 ``` yaml
 [
     {
         "name": "Shawn",
         "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "B",
-        "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "Jan",
-        "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "Dylan",
-        "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "Brett",
-        "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "Khoi",
-        "yelping_since": "2010-07-09"
-    },
-    {
-        "name": "Jesylee",
-        "yelping_since": "2010-07-09"
-    },
-    
-    ....
+    }
 ]
 ``` 
 
