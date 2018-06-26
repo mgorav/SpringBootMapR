@@ -14,14 +14,14 @@ import java.util.Map;
 import static org.ojai.store.QueryCondition.Op.EQUAL;
 
 @SpringBootApplication
-public class QueryApplication {
+public class MapRQueryApplication {
 
     public static final String OJAI_CONNECTION_URL = "ojai:mapr:";
     //Full path including namespace /mapr/<cluster-name>/apps/business
     public static final String TABLE_NAME = "/mapr/maprdemo.mapr.io/apps/user";
 
     public static void main(String[] args) {
-        SpringApplication.run(QueryApplication.class, args);
+        SpringApplication.run(MapRQueryApplication.class, args);
     }
 
     @RestController
